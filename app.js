@@ -117,3 +117,45 @@ function updateRecentCitiesDropdown() {
     dropdown.appendChild(listItem);
   });
 }
+
+// ====== Get Weather Data Using User's Current Location or Fallback to Jaipur ======
+function getCurrentLocationOrJaipur() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const { latitude, longitude } = position.coords;
+
+        const locationUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${WeatherApiKey}&units=metric`;
+
+        // Fetch current weather using coordinates
+        fetch(locationUrl)
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.cod === 200) {
+              updateCurrentWeather(data);
+              return fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${WeatherApiKey}&units=metric`);
+            } else {
+              throw new Error("Could not fetch current location weather.");
+            }
+          })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.cod === "200") {
+              updateForecastData(data);
+            }
+          })
+          .catch((error) => {
+            console.warn("Location fetch failed. Falling back to Jaipur.");
+            getWeatherData("Jaipur");
+          });
+      },
+      (error) => {
+        console.warn("Location permission denied. Falling back to Jaipur.");
+        getWeatherData("Jaipur");
+      }
+    );
+  } else {
+    console.warn("Geolocation not supported. Falling back to Jaipur.");
+    getWeatherData("Jaipur");
+  }
+}
