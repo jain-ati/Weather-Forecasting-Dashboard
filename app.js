@@ -183,3 +183,19 @@ document.getElementById("dropdown_recent_searches").addEventListener("click", ()
   const dropdown = document.getElementById("recent_searches");
   dropdown.classList.toggle("hidden");
 });
+
+// ====== Initialize Page on Load ======
+window.onload = () => {
+  updateRecentCitiesDropdown(); // Populate recent searches
+  getCurrentLocationOrJaipur(); // Show weather for current location or fallback
+};
+
+// ====== Dark Mode Toggle ======
+document.addEventListener('DOMContentLoaded', () => {
+  const toggleButton = document.getElementById('toggle_dark');
+  if (toggleButton) {
+    toggleButton.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark'); // Toggle dark mode
+    });
+  }
+});
