@@ -90,7 +90,32 @@
                 class="w-full py-3 mt-6 text-white font-semibold rounded-lg bg-gradient-to-r from-primary to-secondary shadow-md transition-transform transform hover:scale-105 hover:shadow-xl">
                 Search
             </button>
-            
+
+            <!-- Divider -->
+            <div class="flex items-center justify-center gap-2 my-6">
+                <span class="block w-full h-0.5 bg-gray-400"></span>
+                <span class="text-white">or</span>
+                <span class="block w-full h-0.5 bg-gray-400"></span>
+            </div>
+
+            <!-- Current Location Button -->
+            <button id="current_location"
+                class="w-full py-3 text-white font-semibold rounded-lg bg-gradient-to-r from-primary to-secondary shadow-md transition-transform transform hover:scale-105 hover:shadow-xl">
+                Use Current Location
+            </button>
+
+            <!-- Dropdown for Recent Searches -->
+            <div class="relative mt-6">
+                <button id="dropdown_recent_searches"
+                    class="w-full py-3 text-white font-semibold rounded-lg bg-gradient-to-r from-primary to-secondary shadow-md transition-transform transform hover:scale-105 hover:shadow-xl">
+                    Recently Searched Cities
+                </button>
+
+                <!-- List of Recently Searched Cities -->
+                <ul id="recent_searches"
+                    class="absolute left-0 w-full bg-white bg-opacity-10 text-white shadow-lg hidden rounded-lg mt-2 p-2 backdrop-blur-sm">
+                </ul>
+            </div>
         </div>
 
     </section>
