@@ -159,3 +159,27 @@ function getCurrentLocationOrJaipur() {
     getWeatherData("Jaipur");
   }
 }
+
+// ====== Event Listeners ======
+
+// Search button click
+document.getElementById("Search_place").addEventListener("click", () => {
+  const city = document.getElementById("location_input").value.trim();
+  if (city) {
+    getWeatherData(city);
+  } else {
+    alert("Please enter a valid city name.");
+  }
+});
+
+// Current location button click
+document.getElementById("current_location").addEventListener("click", () => {
+  document.getElementById("recent_searches").classList.add("hidden");
+  getCurrentLocationOrJaipur();
+});
+
+// Recent searches dropdown toggle
+document.getElementById("dropdown_recent_searches").addEventListener("click", () => {
+  const dropdown = document.getElementById("recent_searches");
+  dropdown.classList.toggle("hidden");
+});
