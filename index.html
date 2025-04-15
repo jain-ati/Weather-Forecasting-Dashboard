@@ -115,11 +115,45 @@
                 <ul id="recent_searches"
                     class="absolute left-0 w-full bg-white bg-opacity-10 text-white shadow-lg hidden rounded-lg mt-2 p-2 backdrop-blur-sm">
                 </ul>
+                
             </div>
+
+        </div>
+
+        <!-- Right Panel: Weather Data -->
+        <div class="md:w-3/5 p-8 flex flex-col gap-6 backdrop-blur-lg bg-opacity-20 border border-white/30 shadow-lg rounded-lg"
+            id="weather_data">
+
+            <!-- Current Weather Card -->
+            <div id="current_weather"
+                class="hidden flex gap-6 items-center rounded-lg p-8 bg-gradient-to-r from-primary to-secondary shadow-lg">
+                <div class="flex-1">
+                    <h3 id="location" class="font-semibold text-xl text-white"></h3>
+                    <p class="text-white">Temperature: <span id="temperature" class="font-bold"></span>&deg;C.</p>
+                    <p class="text-white">Wind: <span id="wind" class="font-bold"></span> M/S</p>
+                    <p class="text-white">Humidity: <span id="humidity" class="font-bold"></span>%</p>
+                    <p class="text-white">Description: <span id="description" class="font-bold"></span></p>
+                </div>
+
+                <!-- Weather Icon -->
+                <div class="flex justify-center items-center">
+                    <img id="weather_image" src="" alt="Weather Image" class="w-24 h-auto hidden">
+                </div>
+            </div>
+
+            <!-- Forecast Section Title -->
+            <div>
+                <h2 class="text-3xl font-bold text-white">5-Day Forecast</h2>
+            </div>
+
+            <!-- Forecast Cards Container -->
+            <div id="weather_forcast"
+                class="grid grid-cols-1 sm:grid-cols-2 gap-10 md:grid-cols-2 lg:grid-cols-3 ">
+            </div>
+
         </div>
 
     </section>
-
 
 </body>
 
