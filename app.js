@@ -97,3 +97,23 @@ function updateForecastData(data) {
     forecastDetails.appendChild(card);
   });
 }
+
+// ====== Update Dropdown with Recent Search Cities ======
+function updateRecentCitiesDropdown() {
+  const dropdown = document.getElementById("recent_searches");
+  dropdown.innerHTML = "";
+
+  recentSearchCities.forEach((city) => {
+    const listItem = document.createElement("li");
+    listItem.textContent = city;
+    listItem.className = "py-2 px-4 hover:bg-gray-300 cursor-pointer";
+
+    // On click, fetch weather data for selected city
+    listItem.addEventListener("click", () => {
+      getWeatherData(city);
+      dropdown.classList.add("hidden");
+    });
+
+    dropdown.appendChild(listItem);
+  });
+}
