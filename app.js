@@ -58,3 +58,42 @@ function updateCurrentWeather(data) {
   };
   imageElement.classList.remove("hidden");
 }
+
+// ====== Update 5-Day Forecast Section ======
+function updateForecastData(data) {
+  const forecastDetails = document.getElementById("weather_forcast");
+  forecastDetails.innerHTML = "";
+
+  // Filter forecast for midnight (00:00:00) entries
+  const forecasts = data.list.filter((f) => f.dt_txt.includes("00:00:00"));
+
+  forecasts.forEach((forecast) => {
+    const card = document.createElement("div");
+    card.className = "h-94 bg-gradient-to-b from-primary to-secondary text-white text-center p-4 rounded-lg shadow-xl hover:scale-105 transition";
+
+    const date = new Date(forecast.dt * 1000).toLocaleDateString();
+    const iconUrl = `https://openweathermap.org/img/wn/${forecast.weather[0].icon}.png`;
+
+    // Create image element with fallback
+    const weatherImg = document.createElement("img");
+    weatherImg.src = iconUrl;
+    weatherImg.alt = "Weather Icon";
+    weatherImg.className = "w-16 mx-auto";
+    weatherImg.onerror = () => {
+      weatherImg.src = "sunny.png";
+    };
+
+    // Fill in forecast card details
+    card.innerHTML = `
+      <h2 class="font-semibold">${date}</h2>
+      <div class="my-2" id="img-container"></div>
+      <p>Temp: <span class="font-bold">${forecast.main.temp.toFixed(2)}</span>&deg;C.</p>
+      <p>Wind: <span class="font-bold">${forecast.wind.speed}</span> M/S</p>
+      <p>Humidity: <span class="font-bold">${forecast.main.humidity}</span>%</p>
+    `;
+
+    // Append weather image to forecast card
+    card.querySelector("#img-container").appendChild(weatherImg);
+    forecastDetails.appendChild(card);
+  });
+}
