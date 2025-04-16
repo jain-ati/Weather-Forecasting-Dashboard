@@ -10,7 +10,7 @@ A beautifully designed **weather forecasting app** built with **HTML**, **Tailwi
 
 |              Home Screen               |             Forecast Screen            |
 |----------------------------------------|----------------------------------------|
-| ![Screenshot1](assets/screenshot1.png) | ![Screenshot2](assets/screenshot2.png) |
+| ![Screenshot1](assets/Screenshot1.png) | ![Screenshot2](assets/Screenshot2.png) |
 
 ---
 
